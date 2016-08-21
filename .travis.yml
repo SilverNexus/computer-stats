@@ -7,6 +7,14 @@ perl:
   - "5.16"
   - "5.14"
 
+os:
+    - linux
+    - osx
+
+matrix:
+    allow_failues:
+        -os: osx
+
 install: true
 
 script:
