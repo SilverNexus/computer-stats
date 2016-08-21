@@ -4,6 +4,11 @@ computer-stats - a computer metric aggregation script
 
 As of this time, the script takes no arguments. Just run it and it should work.
 
+## Requirements
+
+1. Perl 5.14 or newer.
+2. A Unix-like system. Possibly specifically Linux, but more testing is needed to verify.
+
 ## Installation
 
 **Linux**
