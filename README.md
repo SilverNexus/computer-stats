@@ -34,6 +34,12 @@ Further testing could determine whether this will work on Mac or not.
 
 Try Linux instructions above. Not tested whether this will work or not.
 
+## Build Status
+
+[![tv-image][]][tv-site]
+
+[tv-image]: https://travis-ci.org/SilverNexus/computer-stats.svg?branch=master
+
 ## License
 
 This program is free software; you can redistribute it and/or modify
