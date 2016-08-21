@@ -28,7 +28,7 @@ There is no Windows-compatible version for this script at this time.
 
 **Mac OS X**
 
-Further testing could determine whether this will work on Mac or not.
+Memory information fails due to a lack of /proc/meminfo. Not compatible without modification.
 
 **BSD**
 
