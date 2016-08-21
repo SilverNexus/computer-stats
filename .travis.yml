@@ -13,4 +13,4 @@ perl:
 install: true
 
 script:
-perl computer-stats.pl
+    perl computer-stats.pl
