@@ -39,6 +39,7 @@ Try Linux instructions above. Not tested whether this will work or not.
 [![tv-image][]][tv-site]
 
 [tv-image]: https://travis-ci.org/SilverNexus/computer-stats.svg?branch=master
+[tv-site]: https://travis-ci.org/SilverNexus/computer-stats/branches
 
 ## License
 
