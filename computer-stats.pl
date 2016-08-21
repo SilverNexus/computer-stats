@@ -23,20 +23,20 @@ use strict;
 my $filename = "usage_log.csv";
 
 # Get the memory and swap information
-my $res = `egrep "Mem|Cache|Swap|Buffer" /proc/meminfo`;
+my $res = `egrep "Mem|Cache|Swap|Buffer" /proc/meminfo` or die("Could not access memory information.");
 # Get the workload information
-my $uptime = `uptime`;
+my $uptime = `uptime` or die("Could not access workload information.");
 
 # Get the time, too
-my $time = `date`;
+my $time = `date` or die("Could not access time.");
 chomp($time);
 # And get a list of users
-my $userlist = `users`;
+my $userlist = `users` or die("Could not retrieve user list.");
 chomp($userlist);
 
 # Get the current disk's usage
 #TODO: Handle many disks/partitions.
-my $disk = `df .`;
+my $disk = `df .` or die("Could not check disk usage.");
 my @lines = split("\n", $disk);
 $disk = $lines[1];
 

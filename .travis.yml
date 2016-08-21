@@ -12,7 +12,7 @@ os:
     - osx
 
 matrix:
-    allow_failues:
+    allow_failures:
         -os: osx
 
 install: true
