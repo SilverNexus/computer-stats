@@ -1,0 +1,6 @@
+2016-08-21	Daniel Hawkins
+	* computer-stats.pl: Initial implementation.
+	* .travis.yml: Build testing automation. Includes tests for Mac OS X that fail.
+	* COPYING: Issued under GNU GPLv2
+	* README.md: Established minimum requirements and installation instructions.
+	* TODO: List of future plans for the tool.
