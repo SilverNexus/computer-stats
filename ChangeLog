@@ -1,3 +1,7 @@
+2016-08-23	Daniel Hawkins
+	* computer-stats.pl: Add the ability to set the output file name and location.
+	* README.md: Update to reflect new command-line argument.
+
 2016-08-21	Daniel Hawkins
 	* computer-stats.pl: Initial implementation.
 	* .travis.yml: Build testing automation. Includes tests for Mac OS X that fail.

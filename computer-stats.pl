@@ -19,8 +19,17 @@
 
 use strict;
 
-# Set as a variable for easy maintenance
-my $filename = "usage_log.csv";
+my $filename;
+
+# Check ARGV for values. If no values, use default of "usage_log.csv"
+if ($#ARGV >= 0){
+   $filename = "$ARGV[0]";
+   # Shift this off the front so future arguments can be easily parsed.
+   unshift(@ARGV);
+}
+else{
+    $filename = "usage_log.csv";
+}
 
 # Get the memory and swap information
 my $res = `egrep "Mem|Cache|Swap|Buffer" /proc/meminfo` or die("Could not access memory information.");

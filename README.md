@@ -2,7 +2,9 @@ computer-stats - a computer metric aggregation script
 
 ## Usage
 
-As of this time, the script takes no arguments. Just run it and it should work.
+computer-stats.pl [output-file]
+
+output-file is optional -- if it is not included, the log will output to usage_log.csv.
 
 ## Requirements
 
