@@ -18,4 +18,5 @@ matrix:
 install: true
 
 script:
-    perl computer-stats.pl
+    - perl computer-stats.pl
+    - perl computer-stats.pl out_test.csv && rm out_test.csv

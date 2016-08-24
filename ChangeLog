@@ -1,6 +1,7 @@
 2016-08-23	Daniel Hawkins
 	* computer-stats.pl: Add the ability to set the output file name and location.
 	* README.md: Update to reflect new command-line argument.
+	* .travis.yml: Add test to ensure that the use of a custom output file works.
 
 2016-08-21	Daniel Hawkins
 	* computer-stats.pl: Initial implementation.
