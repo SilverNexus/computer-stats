@@ -1,6 +1,8 @@
 2016-08-25	Daniel Hawkins
 	* computer-stats.pl: Added feature for multiple disks and cleaned up argument handling.
 	* README.md: Updated usage information to reflect new argument handling.
+	* .travis.yml: Updated existing checks to reflect new argument handling.
+	* install.sh: Added install script.
 
 2016-08-23	Daniel Hawkins
 	* computer-stats.pl: Add the ability to set the output file name and location.
