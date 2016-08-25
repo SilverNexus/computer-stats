@@ -2,9 +2,15 @@ computer-stats - a computer metric aggregation script
 
 ## Usage
 
-computer-stats.pl [output-file]
+computer-stats.pl [-o output-file] [-d disk mount]
 
-output-file is optional -- if it is not included, the log will output to usage_log.csv.
+Note: The -d flag can be used any number of times to specify additional directories.
+	It should also be noted that the measurement takes place for the mount point
+	of the disk used at the directory specified.
+Example: A single disk, single partition install will have all -d paths give disk
+	stats for /.
+	Other configurations will use the partition mount point for the
+	specified directory.
 
 ## Requirements
 

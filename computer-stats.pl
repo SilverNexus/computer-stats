@@ -18,18 +18,15 @@
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 use strict;
+use Getopt::Long;
 
-my $filename;
+my $filename = "usage_log.csv";
+# Reference to a scalar.
+my @disk_path_list;
 
-# Check ARGV for values. If no values, use default of "usage_log.csv"
-if ($#ARGV >= 0){
-   $filename = "$ARGV[0]";
-   # Shift this off the front so future arguments can be easily parsed.
-   unshift(@ARGV);
-}
-else{
-    $filename = "usage_log.csv";
-}
+# Use Getopt to clean up argument parsing
+GetOptions("output-file|o=s" => \$filename,
+	   "disk-paths|d=s" => \@disk_path_list);
 
 # Get the memory and swap information
 my $res = `egrep "Mem|Cache|Swap|Buffer" /proc/meminfo` or die("Could not access memory information.");
@@ -42,24 +39,24 @@ chomp($time);
 # And get a list of users
 my $userlist = `users` or die("Could not retrieve user list.");
 chomp($userlist);
-
-# Get the current disk's usage
-#TODO: Handle many disks/partitions.
-my $disk = `df .` or die("Could not check disk usage.");
+print "@disk_path_list\n";
+# Get the specified disks' usage
+my $disk = `df @disk_path_list` or die("Could not check disk usage.");
 my @lines = split("\n", $disk);
-$disk = $lines[1];
+# The first line is just titles -- skip it
+shift(@lines);
 
 # Split the memory results by line
 # We use multiple lines of this, so we do this after the other commands to allow reuse of variables.
-@lines = split("\n", $res);
+my @memlines = split("\n", $res);
 
 #Declare the variables to store the memory information
 my $total, my $free, my $swap, my $swfree, my $cache, my $buffers, my $up,
-my $load1, my $load5, my$load15, my $numusers, my $disksize, my $diskfree,
-my $diskused, my $diskmount, my $diskpct;
+my $load1, my $load5, my$load15, my $numusers, my @disksize, my @diskfree,
+my @diskused, my @diskmount, my @diskpct;
 
 #Split out the memory and swap information
-for(@lines){
+for(@memlines){
     if (/^MemTotal:\s*(\d+)/s){
         $total = $1;
     }
@@ -91,12 +88,15 @@ if ($uptime =~ /\s*\d{2}:\d{2}:\d{2}\s+up\s+(((\d+ days,\s+)?\d+:\d{2})|(\d+ min
 }
 
 # Split out disk information
-if ($disk =~ /^((\/\w+)+)\s*(\d+[GMKT]?)\s*(\d+[GMKT]?)\s*(\d+[GMKT]?)\s*(\d+\%)\s*(\/\w+)+/s){
-    $diskmount = $7;
-    $disksize = $3;
-    $diskused = $4;
-    $diskfree = $5;
-    $diskpct = $6;
+for (@lines){
+    # TODO: Come up with a better way to handle the multiple disks -- current way is ugly.
+    if (/^((\/\w+)+)\s*(\d+[GMKT]?)\s*(\d+[GMKT]?)\s*(\d+[GMKT]?)\s*(\d+\%)\s*(\/(\w+\/?)*)/s){
+	push(@diskmount, $7);
+	push(@disksize, $3);
+	push(@diskused, $4);
+	push(@diskfree, $5);
+	push(@diskpct, $6);
+    }
 }
 
 # See if the file exists. If not, initialize the new log file with header information
@@ -104,7 +104,9 @@ initialize() unless (-e $filename);
 
 # open the output file and append to it.
 open(LOG, ">> $filename") or die("Failed to open $filename");
-say LOG "$time, $up, $total, $free, $cache, $buffers, $swap, $swfree, $diskmount, $disksize, $diskused, $diskfree, $diskpct, $load1, $load5, $load15, $numusers, $userlist";
+# Separate multiple disks by semicolon for better parsing.
+$" = ";";
+say LOG "$time, $up, $total, $free, $cache, $buffers, $swap, $swfree, @diskmount, @disksize, @diskused, @diskfree, @diskpct, $load1, $load5, $load15, $numusers, $userlist";
 close(LOG);
 
 sub initialize{
