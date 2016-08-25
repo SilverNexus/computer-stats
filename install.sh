@@ -37,6 +37,7 @@ then
     # then turn around and copy it back to crontab
     sed "/computer-stats.pl/ c $line" /etc/crontab > /etc/crontab_new
     mv /etc/crontab_new /etc/crontab
+    touch /etc/crontab
 else
     # Just append it to the crontab
     echo "$line" >> /etc/crontab
