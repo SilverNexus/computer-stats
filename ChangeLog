@@ -4,6 +4,8 @@
 	  Fix missing asterisk in installed crontab line.
 	* README.md: Update installation instructions to use new install script.
 	* .travis.yml: Update travis-ci tests to include test for the install script.
+	* TODO: Obsoleted the TODO file. Not sure why I didn't just use the issue
+	  tracker to begin with.
 
 2016-08-25	Daniel Hawkins
 	* computer-stats.pl: Added feature for multiple disks and cleaned up argument handling.
