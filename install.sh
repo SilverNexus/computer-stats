@@ -23,7 +23,7 @@ then
     exit 1
 fi
 
-line="*/10 * * * root perl /etc/cron.d/computer-stats.pl $*"
+line="*/10 * * * * root perl /etc/cron.d/computer-stats.pl $*"
 
 cp computer-stats.pl /etc/cron.d/
 
