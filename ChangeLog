@@ -1,3 +1,7 @@
+2016-08-30	Daniel Hawkins
+	* computer stats.pl: Remove development output from script.
+	* install.sh: Fix typo in comments.
+
 2016-08-25	Daniel Hawkins
 	* computer-stats.pl: Added feature for multiple disks and cleaned up argument handling.
 	* README.md: Updated usage information to reflect new argument handling.
