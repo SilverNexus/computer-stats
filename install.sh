@@ -33,7 +33,7 @@ res=`grep -e "computer-stats.pl" /etc/crontab`
 if [ "$res" != "" ];
 then
     # Replace that line in crontab with a new one.
-    # Writing directly to crontb creates an empty file, so we make a new file,
+    # Writing directly to crontab creates an empty file, so we make a new file,
     # then turn around and copy it back to crontab
     sed "/computer-stats.pl/ c $line" /etc/crontab > /etc/crontab_new
     mv /etc/crontab_new /etc/crontab

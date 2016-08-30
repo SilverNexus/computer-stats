@@ -39,7 +39,7 @@ chomp($time);
 # And get a list of users
 my $userlist = `users` or die("Could not retrieve user list.");
 chomp($userlist);
-print "@disk_path_list\n";
+
 # Get the specified disks' usage
 my $disk = `df @disk_path_list` or die("Could not check disk usage.");
 my @lines = split("\n", $disk);
