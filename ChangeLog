@@ -2,6 +2,7 @@
 	* computer stats.pl: Remove development output from script.
 	* install.sh: Fix typo in comments.
 	  Fix missing asterisk in installed crontab line.
+	* README.md: Update installation instructions to use new install script.
 
 2016-08-25	Daniel Hawkins
 	* computer-stats.pl: Added feature for multiple disks and cleaned up argument handling.

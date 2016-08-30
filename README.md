@@ -21,14 +21,11 @@ Example: A single disk, single partition install will have all -d paths give dis
 
 **Linux**
 
-1. Copy computer-stats.pl to /etc/cron.d/
-2. run `crontab -e`
-3. Add the following line to the crontab to make it run every ten minutes:
-`*/10 * * * * perl /etc/cron.d/computer-stats.pl`
-4. Exit the text editor that crontab -e opened and save your changes if not done already.
-This automatically updates cron to read the new crontab, so no further action is required.
+Run install.sh, providing any arguments for the cron job to the script.
+install.sh will need superuser privileges to operate correctly.
 
-This will result in the generated csv being written to your home folder. It should be called usage_log.csv.
+Example: `sudo install.sh -o /var/log/output.csv -d /home -d /` will make the logfile be written
+at `/var/log/output.csv` and the program will check the disk space of the partitions at `/home` and `/`.
 
 **Windows**
 
