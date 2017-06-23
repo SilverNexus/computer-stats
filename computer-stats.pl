@@ -79,7 +79,7 @@ for(@memlines){
 
 # Split out the uptime information.
 # For the uptime, it needs to handle multiple days of uptime, as well as under an hour.
-if ($uptime =~ /\s*\d{2}:\d{2}:\d{2}\s+up\s+(((\d+ days,\s+)?\d+:\d{2})|(\d+ min)),\s+(\d+) user(s)?,\s+load average:\s+(\d+\.\d{2}),\s+(\d+\.\d{2}),\s+(\d+\.\d{2})/s){
+if ($uptime =~ /\s*\d{2}:\d{2}:\d{2}\s+up\s+(((\d+ days?,\s+)?\d+:\d{2})|(\d+ min)),\s+(\d+) user(s)?,\s+load average:\s+(\d+\.\d{2}),\s+(\d+\.\d{2}),\s+(\d+\.\d{2})/s){
     $up = $1;
     $numusers = $5;
     $load1 = $7;
