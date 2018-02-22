@@ -1,3 +1,7 @@
+2018-02-22  Daniel Hawkins
+    * computer_stats.pl: Change day separator in uptime to ; to prevent conflict
+      with the field delimiter.
+
 2017-06-22	Daniel Hawkins
 	* computer_stats.pl: Fix improper regex handling of (1 <= day < 2) uptime.
 	  Fix improper regex handling of n days, x min uptime.

@@ -85,6 +85,8 @@ if ($uptime =~ /\s*\d{2}:\d{2}:\d{2}\s+up\s+((\d+ days?,\s+)?((\d+:\d{2})|(\d+ m
     $load1 = $7;
     $load5 = $8;
     $load15 = $9;
+    # Convert the comma from more than one day of uptime to avoid conflicts with the line delimiter.
+    $up =~ s/\,/\;/g;
 }
 
 # Split out disk information
